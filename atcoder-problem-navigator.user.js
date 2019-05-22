@@ -2,7 +2,7 @@
 // @name         atcoder-problem-navigator
 // @namespace    https://github.com/yoshrc
 // @version      1.0
-// @description  Show a navigation bar on AtCoder contest pages for jumping to problems
+// @description  Shows a navigation bar on AtCoder contest pages for jumping to problems.
 // @author       yoshrc
 // @match        https://atcoder.jp/contests/*
 // @grant        none
