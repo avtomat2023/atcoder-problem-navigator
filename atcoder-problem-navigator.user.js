@@ -11,10 +11,9 @@
 
 (function() {
     'use strict';
-    const scriptName = 'atcoder-problem-navigator';
 
     const contest = location.href.match(/^https:\/\/atcoder\.jp\/contests\/([^\/]+)/)[1];
-    const key = scriptName + "-" + contest;
+    const key = 'atcoder-problem-navigator-' + contest;
 
     if (location.href.match(/^https:\/\/atcoder\.jp\/contests\/([^\/]+)\/tasks\/?$/)) {
         console.log(contest);
@@ -25,7 +24,7 @@
             const $links = $rows.eq(i).find('a');
             const href = $links.eq(0).attr('href');
             console.log(href);
-            const text = $links.eq(0).text() + " - " + $links.eq(1).text();
+            const text = $links.eq(0).text() + ' - ' + $links.eq(1).text();
             problems.push({
                 href: href,
                 text: text
@@ -36,18 +35,13 @@
 
     if (key in localStorage) {
         let problems = JSON.parse(localStorage[key]);
-        const $contestBar = $('#contest-nav-tabs');
         const $problemsBar = $('<ul class="nav nav-tabs"></ul>');
         for (let i = 0; i < problems.length; i++) {
-            const $span = $('<span style="margin-left: 10px; margin-right: 10px; white-space: nowrap"></span>')
-            const $link = $('<a></a>')
+            const $link = $('<a style="margin-left: 10px; margin-right: 10px; white-space: nowrap"></a>')
                   .attr('href', problems[i].href)
                   .text(problems[i].text);
-            $span.append($link);
-            const $separator = $('<span></span>');
-            $problemsBar.append($span);
-            $problemsBar.append($separator);
+            $problemsBar.append($('<span> </span>').append($link));
         }
-        $contestBar.append($problemsBar);
+        $('#contest-nav-tabs').append($problemsBar);
     }
 })();
