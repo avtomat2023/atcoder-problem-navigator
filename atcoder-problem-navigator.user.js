@@ -16,14 +16,11 @@
     const key = 'atcoder-problem-navigator-' + contest;
 
     if (location.href.match(/^https:\/\/atcoder\.jp\/contests\/([^\/]+)\/tasks\/?$/)) {
-        console.log(contest);
         const problems = [];
         const $rows = $('tbody>tr');
         for (let i = 0; i < $rows.length; i++) {
-            console.log(i);
             const $links = $rows.eq(i).find('a');
             const href = $links.eq(0).attr('href');
-            console.log(href);
             const text = $links.eq(0).text() + ' - ' + $links.eq(1).text();
             problems.push({
                 href: href,
