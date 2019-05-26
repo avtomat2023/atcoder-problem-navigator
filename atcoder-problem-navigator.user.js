@@ -6,7 +6,6 @@
 // @author       yoshrc
 // @match        https://atcoder.jp/contests/*
 // @grant        none
-// @require http://code.jquery.com/jquery-3.3.1.min.js
 // ==/UserScript==
 
 (function() {
@@ -17,11 +16,11 @@
 
     if (location.href.match(/^https:\/\/atcoder\.jp\/contests\/([^\/]+)\/tasks\/?$/)) {
         const problems = [];
-        const $rows = $('tbody>tr');
-        for (let i = 0; i < $rows.length; i++) {
-            const $links = $rows.eq(i).find('a');
-            const href = $links.eq(0).attr('href');
-            const text = $links.eq(0).text() + ' - ' + $links.eq(1).text();
+        const rows = document.querySelectorAll('tbody>tr');
+        for (let i = 0; i < rows.length; i++) {
+            const links = rows[i].querySelectorAll('a');
+            const href = links[0].getAttribute('href');
+            const text = links[0].textContent + ' - ' + links[1].textContent;
             problems.push({
                 href: href,
                 text: text
@@ -32,13 +31,18 @@
 
     if (key in localStorage) {
         let problems = JSON.parse(localStorage[key]);
-        const $problemsBar = $('<ul class="nav nav-tabs"></ul>');
+        const problemsBar = document.createElement('ul');
+        problemsBar.className = 'nav nav-tabs';
         for (let i = 0; i < problems.length; i++) {
-            const $link = $('<a style="margin-left: 10px; margin-right: 10px; white-space: nowrap"></a>')
-                  .attr('href', problems[i].href)
-                  .text(problems[i].text);
-            $problemsBar.append($('<span> </span>').append($link));
+            const link = document.createElement('a');
+            link.setAttribute('style', 'margin-left: 10px; margin-right: 10px; white-space: nowrap');
+            link.setAttribute('href', problems[i].href);
+            link.textContent = problems[i].text;
+            const span = document.createElement('span');
+            span.textContent = ' ';
+            span.appendChild(link);
+            problemsBar.appendChild(span);
         }
-        $('#contest-nav-tabs').append($problemsBar);
+        document.getElementById('contest-nav-tabs').appendChild(problemsBar);
     }
 })();
