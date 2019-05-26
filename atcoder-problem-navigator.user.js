@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         atcoder-problem-navigator
 // @namespace    https://github.com/yoshrc
-// @version      1.1
+// @version      1.2
 // @description  Shows a navigation bar on AtCoder contest pages for jumping to problems.
 // @author       yoshrc
 // @match        https://atcoder.jp/contests/*
