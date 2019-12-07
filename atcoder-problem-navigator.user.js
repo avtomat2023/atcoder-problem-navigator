@@ -62,7 +62,7 @@
             for (let i = 1; i < rows.length; i++) {
                 const links = rows[i].querySelectorAll('a');
                 const href = links[0].getAttribute('href');
-                const text = links[0].textContent + '. ' + links[1].textContent;
+                const text = links[0].textContent.trim() + '. ' + links[1].textContent;
                 problems.push({
                     href: href,
                     text: text
