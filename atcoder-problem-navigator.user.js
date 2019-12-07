@@ -15,8 +15,8 @@
     const KEY_PREFIX = 'atcoder-problem-navigator-';
 
     const do_atcoder = () => {
-        const contest = location.href.match(/^https:\/\/atcoder\.jp\/contests\/([^\/]+)/)[1];
-        const key = KEY_PREFIX + contest;
+        const contest = location.href.match(/^https:\/\/atcoder\.jp\/contests\/([^\/?]+)/)[1];
+        const key = KEY_PREFIX + 'atcoder-' + contest;
 
         if (location.href.match(/^https:\/\/atcoder\.jp\/contests\/([^\/]+)\/tasks\/?$/)) {
             const problems = [];
@@ -52,8 +52,8 @@
     };
 
     const do_codeforces = () => {
-        const contest = location.href.match(/^https:\/\/codeforces\.com\/contest\/([^\/]+)/)[1];
-        const key = KEY_PREFIX + contest;
+        const contest = location.href.match(/^https:\/\/codeforces\.com\/contest\/([^\/?]+)/)[1];
+        const key = KEY_PREFIX + 'codeforces-' + contest;
 
         if (location.href.match(/^https:\/\/codeforces\.com\/contest\/([^\/]+)\/?$/)) {
             const problems = [];
